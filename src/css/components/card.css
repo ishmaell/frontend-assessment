@@ -1,0 +1,11 @@
+.card {
+  @apply bg-white h-[501px] w-[601px] rounded-[18.15px] p-10;
+}
+
+.card .card-header {
+  @apply flex flex-col justify-center;
+}
+
+.card .brand-logo {
+  @apply h-[30px] mb-5;
+}
