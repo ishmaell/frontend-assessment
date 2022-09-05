@@ -1,0 +1,23 @@
+.sidenav {
+  @apply w-[295px] bg-[#242121] h-screen px-8 fixed top-0 left-0;
+}
+
+.sidenav .brand {
+  @apply pt-10
+}
+
+.sidenav .navlist {
+  @apply mt-10;
+}
+
+.sidenav .navlist li {
+  @apply block mb-8;
+}
+
+.sidenav .navlist li a {
+  @apply text-[#919090] text-[20px] hover:text-white hover:no-underline transition-colors ease-in-out delay-100;
+}
+
+.sidenav .navlist li a.active {
+  @apply text-white;
+}

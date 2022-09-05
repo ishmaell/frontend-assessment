@@ -1,0 +1,107 @@
+.card {
+  @apply bg-white h-auto max-w-[609px] w-full rounded-[18.15px] py-10 px-28;
+}
+
+.card .card-header {
+  @apply flex flex-col justify-center items-center;
+}
+
+.card .brand-logo {
+  @apply h-[30px] mb-5;
+}
+.card .card-info {
+  @apply font-thin;
+}
+
+.card .card-form-area {
+  @apply my-16;
+}
+
+.card .card-widget {
+  @apply flex justify-between font-light -mb-8 relative text-sm;
+}
+
+.card .card-widget .remember-me {
+
+}
+
+.remember-me-input {
+  @apply text-sm;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.card .card-widget .remember-me  input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.remember-me-input:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.remember-me-input input:checked ~ .checkmark {
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.remember-me-input input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.remember-me-input .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid gray;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+ a {
+  @apply hover:underline;
+}
+
+.card .card-footer {
+  @apply text-center my-10 text-[13px] text-mono-purple;
+}
+
+.card .card-footer a {
+  @apply underline;
+}

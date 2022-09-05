@@ -1,0 +1,57 @@
+.form-group-flex {
+  @apply flex justify-between;
+}
+
+.form-group-flex .form-group {
+  @apply w-[48%];
+}
+
+.form-group {
+  @apply mb-8 relative;
+}
+
+.form-group.form-group-slider-toggle {
+  @apply justify-start;
+}
+
+.form-group.form-group-slider-toggle p {
+  @apply ml-5
+}
+
+.form-group.form-group-slider-toggle .toggle-status {
+  @apply text-black;
+}
+
+label {
+  @apply mb-2.5 block;
+}
+
+.input {
+  @apply h-14 w-full bg-white border-mono-border border-1 px-4 text-base outline-0 rounded focus:border-mono-black focus:border-2;
+}
+
+.input:disabled {
+  @apply bg-gray-200 !important;
+}
+
+.reset-input {
+  @apply h-10 border-1 border-gray-200 w-full px-4 text-base outline-0 rounded placeholder:text-sm placeholder:px-[0.4rem];
+}
+
+.input.hasIcon {
+  @apply pr-12;
+}
+
+.input-error {
+  @apply border-red-500;
+}
+.text-area {
+  @apply h-14 w-full bg-white border-1 px-4 py-3 text-base outline-0 rounded mb-10;
+}
+
+.text-area-error {
+  @apply border-red-500 border-1;
+}
+.error-message {
+  @apply text-red-500 px-1 text-sm absolute left-0 -bottom-6;
+}

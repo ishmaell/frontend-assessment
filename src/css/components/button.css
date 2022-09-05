@@ -1,0 +1,43 @@
+.button {
+  @apply font-normal rounded text-center bg-transparent h-[54.31px] text-lg uppercase;
+}
+
+.button.normal-text {
+  @apply font-normal
+}
+
+button.medium-text {
+  @apply font-medium
+}
+
+.button:focus {
+  @apply outline-none;
+}
+
+.button:disabled {
+  @apply opacity-75 cursor-not-allowed;
+}
+
+.button.primary {
+  @apply bg-mono-blue text-white;
+}
+
+.button.gray-stroke {
+  @apply border-gray-500 text-gray-500 border-1;
+}
+
+.button.wide {
+  @apply w-full;
+}
+
+.button.half {
+  @apply w-[49%];
+}
+
+.button .spinner {
+  @apply h-6 w-6 static !important;
+}
+
+.button .spinner svg {
+  @apply stroke-slate-300 stroke-[18];
+}
