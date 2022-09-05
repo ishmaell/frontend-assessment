@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 import MonoLogoWhite from '../assets/images/mono-logo-white.svg';
 import LoadingSkeleton from '../assets/images/loading-skeleton.svg';
 import Padlock from '../assets/images/padlock.svg';
 
-const Initialize = () => {
+const Initialization = () => {
   return (
-    <>
+    <section className="initialization">
       <div className="sidenav">
         <div className="brand">
           <img src={MonoLogoWhite} alt="Mono Logo White" />
@@ -21,13 +22,13 @@ const Initialize = () => {
           <h3 className="text-content">
             Final Step <span>Link your Bank Account in seconds</span>
           </h3>
-          <a className="link-now-btn" href="./">
+          <Link className="link-now-btn" to="../dashboard">
             Link Now <FiArrowUpRight />
-          </a>
+          </Link>
         </div>
       </main>
-    </>
+    </section>
   );
 };
 
-export default Initialize;
+export default Initialization;
