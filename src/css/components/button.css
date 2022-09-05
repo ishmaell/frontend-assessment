@@ -1,13 +1,17 @@
 .button {
-  @apply font-normal rounded text-center bg-transparent h-[54.31px] text-lg uppercase;
+  @apply font-normal rounded text-center bg-transparent h-[54.31px] text-lg uppercase px-5;
 }
 
 .button.normal-text {
   @apply font-normal
 }
 
-button.medium-text {
-  @apply font-medium
+.button.bold-text {
+  @apply font-bold
+}
+
+.button.text-space {
+  @apply tracking-widest;
 }
 
 .button:focus {
@@ -22,8 +26,8 @@ button.medium-text {
   @apply bg-mono-blue text-white;
 }
 
-.button.gray-stroke {
-  @apply border-gray-500 text-gray-500 border-1;
+.button.danger-stroke {
+  @apply bg-mono-light-red border-none text-mono-red border-0;
 }
 
 .button.wide {

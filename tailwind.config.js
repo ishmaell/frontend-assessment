@@ -10,7 +10,9 @@ module.exports = {
         'mono-black': '#101010',
         'mono-border': '#E4E4E4',
         'mono-blue': '#182CD1',
-        'mono-purple': '#5E6CDF'
+        'mono-purple': '#5E6CDF',
+        'mono-red': '#F22828',
+        'mono-light-red': '#FFF4F4'
       }
     },
   },

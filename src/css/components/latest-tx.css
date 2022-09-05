@@ -1,0 +1,33 @@
+.latest-transactions {}
+.latest-transactions .title{
+  @apply text-2xl font-light border-b-1 border-gray-100 pb-3;
+}
+
+.latest-transactions .tx-row {
+  @apply flex justify-between py-3;
+}
+
+
+.latest-transactions .tx-row .icon-text {
+  @apply flex gap-10;
+}
+
+.latest-transactions .icon {
+  @apply w-[50px] h-[50px] rounded-full bg-red-200 flex justify-center items-center text-white text-xl;
+}
+
+.latest-transactions .tx-row .icon-text .icon.blue {
+  @apply bg-[#32A7E2]
+}
+
+.latest-transactions .text-content .expense {
+  @apply font-bold mb-3 text-base;
+}
+
+.latest-transactions .text-content .time {
+  @apply font-thin text-base;
+}
+
+.tx-row .amount {
+  @apply font-bold text-base;
+}
