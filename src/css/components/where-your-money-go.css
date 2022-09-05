@@ -14,10 +14,7 @@
 .where-your-money-go .expense-meter {
   @apply h-2 bg-gray-100 rounded relative after:bg-[#FFB1B1] after:rounded after:absolute after:w-[10%] block after:h-full after:content-[''];
 }
-/* .where-your-money-go .expense-meter::after {
-  content: ' ';
-  display: block
-} */
+
 .where-your-money-go .meter-guage {
   @apply bg-mono-red w-[10%];
 }
