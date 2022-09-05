@@ -1,0 +1,31 @@
+.where-your-money-go {
+  
+}
+.where-your-money-go .text-content {
+  @apply flex justify-between text-base mb-3;
+}
+
+.where-your-money-go .text-content .item {
+  @apply font-bold
+}
+
+.where-your-money-go .text-content .amount {}
+
+.where-your-money-go .expense-meter {
+  @apply h-2 bg-gray-100 rounded relative after:bg-[#FFB1B1] after:rounded after:absolute after:w-[10%] block after:h-full after:content-[''];
+}
+/* .where-your-money-go .expense-meter::after {
+  content: ' ';
+  display: block
+} */
+.where-your-money-go .meter-guage {
+  @apply bg-mono-red w-[10%];
+}
+
+.where-your-money-go .title {
+  @apply text-xl font-light mb-5;
+}
+
+.where-your-money-go .where-your-money-go-row {
+  @apply mb-10;
+}
