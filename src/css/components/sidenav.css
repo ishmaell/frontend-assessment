@@ -1,0 +1,35 @@
+.sidenav {
+  @apply w-[295px] bg-[#515151] h-screen px-5 fixed top-0 left-0;
+}
+
+.sidenav .brand {
+  @apply pt-10
+}
+
+.sidenav .loading-skeleton {
+  @apply mt-16
+}
+
+.main {
+  @apply w-full pl-[295px] flex justify-center;
+}
+
+.link-account-modal {
+  @apply w-full max-w-[393px] bg-mono-black h-[300px] rounded-lg mt-[20%] text-center p-10;
+}
+
+.link-account-modal img {
+  @apply m-auto;
+}
+
+.link-account-modal .text-content {
+  @apply text-white text-2xl font-light mb-10;
+}
+
+.link-account-modal .text-content span {
+  @apply block text-base mt-4;
+}
+
+.link-account-modal .link-now-btn {
+  @apply bg-white flex justify-center items-center gap-2 text-mono-blue uppercase font-bold max-w-[180px] m-auto p-3 rounded;
+}

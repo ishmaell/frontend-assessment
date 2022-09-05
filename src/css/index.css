@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './components/button';
 @import './components/card';
+@import './components/form';
 @import './components/public-layout';
+@import './components/spinner';
+@import './components/sidenav';
+
 
 
 * {
@@ -13,6 +18,7 @@
 }
 
 body {
+  @apply text-mono-black;
   font-family: 'Noto Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
