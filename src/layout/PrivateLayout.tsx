@@ -8,20 +8,20 @@ interface LayoutPropsType {
 
 const Layout: React.FC<LayoutPropsType> = ({ children }) => {
   return (
-    <>
+    <section className="private-layout">
       <Header />
       <Sidenav />
-      {children}
-    </>
+      <main className="main">{children}</main>
+    </section>
   );
 };
 
 const PrivateLayout = () => (
-  <main className="App">
+  <>
     <Layout>
       <Outlet />
     </Layout>
-  </main>
+  </>
 );
 
 export default PrivateLayout;

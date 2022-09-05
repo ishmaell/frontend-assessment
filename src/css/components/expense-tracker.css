@@ -1,0 +1,11 @@
+.expense-tracker {
+  @apply mb-20;
+}
+
+.expense-tracker h3 {
+  @apply font-bold text-xl text-center mb-5;
+}
+
+.expense-tracker img {
+  @apply object-contain w-full;
+}

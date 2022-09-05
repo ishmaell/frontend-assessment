@@ -4,11 +4,15 @@
 
 @import './components/button';
 @import './components/card';
+@import './components/expense-tracker';
 @import './components/form';
 @import './components/header';
+@import './components/latest-tx';
+@import './components/private-layout';
 @import './components/public-layout';
 @import './components/spinner';
 @import './components/sidenav';
+@import './pages/dashboard';
 @import './pages/initialization';
 
 
