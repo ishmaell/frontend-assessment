@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import Header from '../components/ui/Header';
 import Sidenav from '../components/ui/Sidenav';
 
 interface LayoutPropsType {
@@ -8,6 +9,7 @@ interface LayoutPropsType {
 const Layout: React.FC<LayoutPropsType> = ({ children }) => {
   return (
     <>
+      <Header />
       <Sidenav />
       {children}
     </>

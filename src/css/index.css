@@ -5,6 +5,7 @@
 @import './components/button';
 @import './components/card';
 @import './components/form';
+@import './components/header';
 @import './components/public-layout';
 @import './components/spinner';
 @import './components/sidenav';
