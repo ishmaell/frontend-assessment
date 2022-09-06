@@ -1,15 +1,16 @@
+import axios from '../api/axios';
+import useSignForm from '../hooks/useSignupForm';
+import { FieldError } from 'react-hook-form';
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import MonoLogo from '../assets/images/mono-logo.svg';
 import { Button, Input } from '../components/form';
-import { AxiosError } from 'axios';
-import axios from '../api/axios';
-import useSignForm from '../hooks/useSignupForm';
 import { SignupFormType } from '../model/SignupFormType';
 import { LOGIN_URL_PATH, SIGNUP_URL_PATH } from '../constants';
 
 const Signup = () => {
-  const { register, handleSubmit } = useSignForm();
+  const { register, handleSubmit, errors } = useSignForm();
 
   const onSubmit = async (formValues: SignupFormType) => {
     try {
@@ -20,7 +21,7 @@ const Signup = () => {
       });
       console.log(response);
       console.log(login);
-    } catch (error: AxiosError | any) {
+    } catch (error: any) {
       if (!error?.response) {
         console.log('No server response');
       } else if (error.response?.status === 409) {
@@ -30,6 +31,9 @@ const Signup = () => {
       }
     }
   };
+
+  const toggleClass = (hasError: FieldError | undefined) =>
+    classNames('input', { 'input-error': hasError });
 
   return (
     <Card>
@@ -43,14 +47,28 @@ const Signup = () => {
         <div className="card-form-area">
           <div className="form-group-flex">
             <Input
-              classes="input"
+              error={
+                errors.firstName && (
+                  <span className="error-message">
+                    {errors.firstName.message}
+                  </span>
+                )
+              }
+              classes={toggleClass(errors.firstName)}
               placeholder="First name"
               type="text"
               name="firstName"
               register={register}
             />
             <Input
-              classes="input"
+              error={
+                errors.lastName && (
+                  <span className="error-message">
+                    {errors.lastName.message}
+                  </span>
+                )
+              }
+              classes={toggleClass(errors.lastName)}
               placeholder="Last name"
               type="text"
               name="lastName"
@@ -58,14 +76,24 @@ const Signup = () => {
             />
           </div>
           <Input
-            classes="input"
+            error={
+              errors.email && (
+                <span className="error-message">{errors.email.message}</span>
+              )
+            }
+            classes={toggleClass(errors.email)}
             placeholder="Email"
             type="text"
             name="email"
             register={register}
           />
           <Input
-            classes="input"
+            error={
+              errors.password && (
+                <span className="error-message">{errors.password.message}</span>
+              )
+            }
+            classes={toggleClass(errors.password)}
             placeholder="Password"
             type="text"
             name="password"

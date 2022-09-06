@@ -1,5 +1,5 @@
 .card {
-  @apply bg-white h-auto max-w-[609px] w-full rounded-[18.15px] py-10 px-28;
+  @apply bg-white h-auto max-w-[609px] w-full rounded-[18.15px] py-10 px-20;
 }
 
 .card .card-header {
