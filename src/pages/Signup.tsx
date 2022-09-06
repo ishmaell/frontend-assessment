@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import axios from '../api/axios';
 import useSignForm from '../hooks/useSignupForm';
 import { FieldError } from 'react-hook-form';
@@ -6,21 +7,18 @@ import { Link } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import MonoLogo from '../assets/images/mono-logo.svg';
 import { Button, Input } from '../components/form';
-import { SignupFormType } from '../model/SignupFormType';
-import { LOGIN_URL_PATH, SIGNUP_URL_PATH } from '../constants';
+import { SignupFormType } from '../models/SignupFormType';
+import { SIGNUP_URL_PATH } from '../constants';
 
 const Signup = () => {
   const { register, handleSubmit, errors } = useSignForm();
+  const [isRequesting, setIsRequesting] = useState<boolean>(false);
 
   const onSubmit = async (formValues: SignupFormType) => {
+    setIsRequesting(true);
     try {
       const response = await axios.post(SIGNUP_URL_PATH, formValues);
-      const login = await axios.post(LOGIN_URL_PATH, {
-        email: formValues.email,
-        password: formValues.password,
-      });
       console.log(response);
-      console.log(login);
     } catch (error: any) {
       if (!error?.response) {
         console.log('No server response');
@@ -29,6 +27,8 @@ const Signup = () => {
       } else {
         console.log('Unknown error occured. Please try again.');
       }
+    } finally {
+      setIsRequesting(false);
     }
   };
 
@@ -95,12 +95,17 @@ const Signup = () => {
             }
             classes={toggleClass(errors.password)}
             placeholder="Password"
-            type="text"
+            type="password"
             name="password"
             register={register}
           />
         </div>
-        <Button type="submit" classes="button primary wide">
+        <Button
+          type="submit"
+          classes="button primary wide"
+          isRequesting={isRequesting}
+          disabled={isRequesting}
+        >
           Get Started
         </Button>
 
