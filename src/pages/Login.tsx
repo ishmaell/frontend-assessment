@@ -1,30 +1,46 @@
+import { useState } from 'react';
 import axios from '../api/axios';
-import useSignForm from '../hooks/useSignupForm';
 import { FieldError } from 'react-hook-form';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import MonoLogo from '../assets/images/mono-logo.svg';
 import { Button, Input } from '../components/form';
-import { LoginFormType } from '../model/LoginFormType';
+import { LoginFormType } from '../models/LoginFormType';
 import { LOGIN_URL_PATH } from '../constants';
 import useLoginForm from '../hooks/useLoginForm';
+import useAuth from '../hooks/useAuth';
 
 const Login = () => {
   const { register, handleSubmit, errors } = useLoginForm();
+  const { setAuth } = useAuth();
+  const [isRequesting, setIsRequesting] = useState<boolean>(false);
 
   const onSubmit = async (formValues: LoginFormType) => {
+    setIsRequesting(true);
     try {
       const response = await axios.post(LOGIN_URL_PATH, formValues);
-      console.log(response);
+      console.log(response.data?.accessToken);
+      const { firstName, lastName, email, accessToken } = response?.data;
+      setAuth({
+        firstName,
+        lastName,
+        email,
+        accessToken,
+      });
     } catch (error: any) {
       if (!error?.response) {
         console.log('No server response');
-      } else if (error.response?.status === 401) {
+      } else if (
+        error.response?.status === 401 ||
+        error.response?.status === 400
+      ) {
         console.log(error.response.data.error);
       } else {
         console.log('Unknown error occured. Please try again.');
       }
+    } finally {
+      setIsRequesting(false);
     }
   };
 
@@ -59,7 +75,7 @@ const Login = () => {
             }
             classes={toggleClass(errors.password)}
             placeholder="Password"
-            type="text"
+            type="password"
             name="password"
             register={register}
           />
@@ -74,7 +90,12 @@ const Login = () => {
             <Link to="/">I forgot my password</Link>
           </div>
         </div>
-        <Button type="submit" classes="button primary wide">
+        <Button
+          type="submit"
+          classes="button primary wide"
+          disabled={isRequesting}
+          isRequesting={isRequesting}
+        >
           Log In
         </Button>
 

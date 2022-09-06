@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { LoginFormType } from '../model/LoginFormType';
+import { LoginFormType } from '../models/LoginFormType';
 import { LoginSchema } from '../schema/LoginSchema';
 
 function useLoginForm() {
