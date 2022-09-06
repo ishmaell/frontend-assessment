@@ -43,7 +43,7 @@ label {
 }
 
 .input-error {
-  @apply border-red-500;
+  @apply border-red-500 border-2 !important;
 }
 .text-area {
   @apply h-14 w-full bg-white border-1 px-4 py-3 text-base outline-0 rounded mb-10;

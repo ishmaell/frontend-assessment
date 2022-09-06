@@ -11,7 +11,7 @@
 }
 
 .dashboard .total-balance {
-  @apply flex flex-col items-center shadow-lg p-9 rounded-md text-[#273240];
+  @apply flex flex-col items-center shadow-lg p-9 rounded-md text-[#273240] mb-10;
 }
 
 .dashboard .total-balance .title,

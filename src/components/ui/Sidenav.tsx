@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import MonoLogoWhite from '../../assets/images/mono-logo-white.svg';
 
 const Sidenav = () => {
@@ -10,22 +10,22 @@ const Sidenav = () => {
 
       <ul className="navlist">
         <li>
-          <Link to="dashboard">Dashboard</Link>
+          <NavLink to="dashboard">Dashboard</NavLink>
         </li>
         <li>
-          <Link to="expenses">Expenses</Link>
+          <NavLink to="expenses">Expenses</NavLink>
         </li>
         <li>
-          <Link to="wallets">Wallets</Link>
+          <NavLink to="wallets">Wallets</NavLink>
         </li>
         <li>
-          <Link to="summary">Summary</Link>
+          <NavLink to="summary">Summary</NavLink>
         </li>
         <li>
-          <Link to="accounts">Accounts</Link>
+          <NavLink to="accounts">Accounts</NavLink>
         </li>
         <li>
-          <Link to="settings">Settings</Link>
+          <NavLink to="settings">Settings</NavLink>
         </li>
       </ul>
     </div>

@@ -1,6 +1,7 @@
 import { Button } from '../components/form';
 import ExpenseTracker from '../components/stateless/ExpenseTracker';
 import LatestTransactions from '../components/stateless/LatestTransactions';
+import WhereYourMoneyGo from '../components/stateless/WhereYourMoneyGo';
 import BankIcons from '../assets/images/bank-icons.svg';
 
 const Dashboard = () => {
@@ -21,6 +22,7 @@ const Dashboard = () => {
               Unlink Bank Account
             </Button>
           </div>
+          <WhereYourMoneyGo title="Where your money go?" />
         </div>
       </div>
     </div>
