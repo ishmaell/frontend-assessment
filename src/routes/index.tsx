@@ -19,7 +19,8 @@ const Routers = () => {
       </Route>
 
       <Route element={<RequireAuth />}>
-        <Route path="/" element={<PrivateLayout />}>
+        <Route element={<PrivateLayout />}>
+          <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
         </Route>
 

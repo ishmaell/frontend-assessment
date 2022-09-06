@@ -25,7 +25,6 @@ const Login = () => {
     setIsRequesting(true);
     try {
       const response = await axios.post(LOGIN_URL_PATH, formValues);
-      console.log(response.data?.accessToken);
       const { firstName, lastName, email, accessToken } = response?.data;
       setAuth({
         firstName,

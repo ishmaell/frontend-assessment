@@ -3,22 +3,34 @@ import axios from '../api/axios';
 import useSignForm from '../hooks/useSignupForm';
 import { FieldError } from 'react-hook-form';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import MonoLogo from '../assets/images/mono-logo.svg';
 import { Button, Input } from '../components/form';
 import { SignupFormType } from '../models/SignupFormType';
 import { SIGNUP_URL_PATH } from '../constants';
+import useAuth from '../hooks/useAuth';
 
 const Signup = () => {
+  const { setAuth } = useAuth();
   const { register, handleSubmit, errors } = useSignForm();
   const [isRequesting, setIsRequesting] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const onSubmit = async (formValues: SignupFormType) => {
     setIsRequesting(true);
     try {
       const response = await axios.post(SIGNUP_URL_PATH, formValues);
-      console.log(response);
+      const { firstName, lastName, email, accessToken } = response?.data;
+      setAuth({
+        firstName,
+        lastName,
+        email,
+        accessToken,
+      });
+
+      navigate('/initialize');
     } catch (error: any) {
       if (!error?.response) {
         console.log('No server response');
