@@ -4,6 +4,7 @@ import PrivateLayout from '../layout/PrivateLayout';
 import PublicLayout from '../layout/PublicLayout';
 
 // pages
+import RequireAuth from '../components/auth/RequireAuth';
 import Signup from '../pages/Signup';
 import Login from '../pages/Login';
 import Initialize from '../pages/Initialization';
@@ -17,11 +18,13 @@ const Routers = () => {
         <Route path="login" element={<Login />} />
       </Route>
 
-      <Route path="/" element={<PrivateLayout />}>
-        <Route path="dashboard" element={<Dashboard />} />
-      </Route>
+      <Route element={<RequireAuth />}>
+        <Route path="/" element={<PrivateLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+        </Route>
 
-      <Route path="initialize" element={<Initialize />} />
+        <Route path="initialize" element={<Initialize />} />
+      </Route>
     </Routes>
   );
 };

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import axios from '../api/axios';
 import { FieldError } from 'react-hook-form';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import MonoLogo from '../assets/images/mono-logo.svg';
 import { Button, Input } from '../components/form';
@@ -10,11 +9,17 @@ import { LoginFormType } from '../models/LoginFormType';
 import { LOGIN_URL_PATH } from '../constants';
 import useLoginForm from '../hooks/useLoginForm';
 import useAuth from '../hooks/useAuth';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { OptionalType } from '../models';
 
 const Login = () => {
-  const { register, handleSubmit, errors } = useLoginForm();
   const { setAuth } = useAuth();
+  const { register, handleSubmit, errors } = useLoginForm();
   const [isRequesting, setIsRequesting] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+  const location = useLocation() as OptionalType;
+  const from = location.state?.from?.pathname || '/';
 
   const onSubmit = async (formValues: LoginFormType) => {
     setIsRequesting(true);
@@ -28,6 +33,7 @@ const Login = () => {
         email,
         accessToken,
       });
+      navigate(from, { replace: true });
     } catch (error: any) {
       if (!error?.response) {
         console.log('No server response');
