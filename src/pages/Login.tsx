@@ -11,6 +11,7 @@ import useLoginForm from '../hooks/useLoginForm';
 import useAuth from '../hooks/useAuth';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { OptionalType } from '../models';
+import { NotifyError } from '../components/toast/Toast';
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -25,25 +26,33 @@ const Login = () => {
     setIsRequesting(true);
     try {
       const response = await axios.post(LOGIN_URL_PATH, formValues);
-      console.log(response.data?.accessToken);
-      const { firstName, lastName, email, accessToken } = response?.data;
+      const { firstName, lastName, email, hasLinkedAccount, accessToken } =
+        response?.data;
       setAuth({
         firstName,
         lastName,
         email,
+        hasLinkedAccount,
         accessToken,
       });
-      navigate(from, { replace: true });
+      if (!hasLinkedAccount) {
+        navigate('/initialize');
+      } else if (hasLinkedAccount && from !== 'initialize') {
+        // navigate('/');
+        navigate(from, { replace: true });
+      } else {
+        navigate('/');
+      }
     } catch (error: any) {
       if (!error?.response) {
-        console.log('No server response');
+        NotifyError('No server response');
       } else if (
         error.response?.status === 401 ||
         error.response?.status === 400
       ) {
-        console.log(error.response.data.error);
+        NotifyError(error.response.data.message);
       } else {
-        console.log('Unknown error occured. Please try again.');
+        NotifyError('Unknown error occured. Please try again.');
       }
     } finally {
       setIsRequesting(false);
