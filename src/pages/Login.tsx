@@ -44,7 +44,6 @@ const Login = () => {
         navigate('/');
       }
     } catch (error: any) {
-      console.log(error);
       if (!error?.response) {
         NotifyError('No server response');
       } else if (

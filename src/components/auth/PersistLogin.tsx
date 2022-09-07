@@ -1,9 +1,5 @@
-/* eslint-disable no-console */
 import { useState, useEffect } from 'react';
-
 import { Outlet } from 'react-router-dom';
-
-import { NotifyError } from '../toast/Toast';
 import Spinner from '../ui/Spinner';
 import useAuth from '../../hooks/useAuth';
 import useRefreshToken from '../../hooks/useRefreshToken';
@@ -17,8 +13,8 @@ const PersistLogin = () => {
     const verifyRefreshToken = async () => {
       try {
         await refresh();
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        throw new Error(error?.message);
       } finally {
         setIsLoading(false);
       }
