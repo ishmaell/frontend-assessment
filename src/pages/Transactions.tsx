@@ -30,7 +30,7 @@ const Accounts = () => {
         isMounted && setAccounts(response?.data);
       } catch (error: any) {
         if (!error?.response) {
-          NotifyError('No server response');
+          //NotifyError('No server response');
         } else if (error.response?.status === 403) {
           NotifyError(error.response?.data?.error);
         } else if (error.response?.status === 409) {

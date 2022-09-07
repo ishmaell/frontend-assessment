@@ -1,5 +1,5 @@
 const BASE_URL = 'https://mono-backend-assessment.herokuapp.com';
-const BASE_URL_DEV = 'http://localhost.com:8800';
+const BASE_URL_DEV = 'http://localhost:8800';
 const SIGNUP_URL_PATH = 'auth/signup';
 const LOGIN_URL_PATH = 'auth';
 const GET_REFRESH_TOKEN_PATH = 'auth/refresh';

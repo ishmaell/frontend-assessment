@@ -16,6 +16,7 @@
 @import './components/toast';
 @import './components/where-your-money-go';
 @import './pages/dashboard';
+@import './pages/not-found';
 @import './pages/initialization';
 
 
@@ -31,4 +32,8 @@ body {
   font-family: 'Noto Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.persist-login {
+  
 }

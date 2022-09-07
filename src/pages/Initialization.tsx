@@ -8,10 +8,12 @@ import MonoConnect from '@mono.co/connect.js';
 import axios from '../api/axios';
 import { GET_ACCOUNT_ID_PATH, SAVE_LINKED_ACCOUNT } from '../constants';
 import useAuth from '../hooks/useAuth';
+import useAccountBalance from '../hooks/useAccountBalance';
 import { useNavigate } from 'react-router-dom';
 
 const Initialization = () => {
   const { auth } = useAuth();
+  const { setAccountBalance } = useAccountBalance();
   const navigate = useNavigate();
 
   const getAccountId = async (code: string) => {
@@ -25,7 +27,7 @@ const Initialization = () => {
           },
         }
       );
-      await axios.post(
+      const accountDetails = await axios.post(
         SAVE_LINKED_ACCOUNT,
         { id: response?.data.id },
         {
@@ -35,7 +37,9 @@ const Initialization = () => {
         }
       );
 
-      navigate('/dashboard');
+      console.log(accountDetails);
+      setAccountBalance(accountDetails.data?.accountBalance);
+      navigate('/');
     } catch (error: any) {
       if (!error?.response) {
         NotifyError('No server response');

@@ -6,13 +6,17 @@ const useRefreshToken = () => {
   const { setAuth } = useAuth();
 
   const refresh = async () => {
-    const response = await axios.get(GET_REFRESH_TOKEN_PATH, {
-      withCredentials: true,
-    });
-    setAuth({
-      ...response.data,
-    });
-    return response.data.accessToken;
+    try {
+      const response = await axios.get(GET_REFRESH_TOKEN_PATH, {
+        withCredentials: true,
+      });
+      setAuth({
+        ...response.data,
+      });
+      return response.data.accessToken;
+    } catch (error) {
+      console.log(error);
+    }
   };
   return refresh;
 };

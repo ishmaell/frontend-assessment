@@ -1,0 +1,11 @@
+.not-found {
+  @apply mt-[10%] text-center;
+}
+
+.not-found h1 {
+  @apply text-mono-black font-black text-2xl mb-5
+}
+
+.not-found a {
+  @apply underline;
+}

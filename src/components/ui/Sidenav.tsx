@@ -10,7 +10,7 @@ const Sidenav = () => {
 
       <ul className="navlist">
         <li>
-          <NavLink to="dashboard">Dashboard</NavLink>
+          <NavLink to="/">Dashboard</NavLink>
         </li>
         <li>
           <NavLink to="expenses">Expenses</NavLink>
