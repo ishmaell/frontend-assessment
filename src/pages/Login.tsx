@@ -11,6 +11,7 @@ import useLoginForm from '../hooks/useLoginForm';
 import useAuth from '../hooks/useAuth';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { OptionalType } from '../models';
+import { NotifyError } from '../components/toast/Toast';
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -35,14 +36,14 @@ const Login = () => {
       navigate(from, { replace: true });
     } catch (error: any) {
       if (!error?.response) {
-        console.log('No server response');
+        NotifyError('No server response');
       } else if (
         error.response?.status === 401 ||
         error.response?.status === 400
       ) {
-        console.log(error.response.data.error);
+        NotifyError(error.response.data.error);
       } else {
-        console.log('Unknown error occured. Please try again.');
+        NotifyError('Unknown error occured. Please try again.');
       }
     } finally {
       setIsRequesting(false);

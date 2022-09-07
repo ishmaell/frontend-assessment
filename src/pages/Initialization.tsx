@@ -1,11 +1,24 @@
-import { Link } from 'react-router-dom';
+import { useMemo } from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
-
+//import { NotifyError } from '../components/toast/Toast';
 import MonoLogoWhite from '../assets/images/mono-logo-white.svg';
 import LoadingSkeleton from '../assets/images/loading-skeleton.svg';
 import Padlock from '../assets/images/padlock.svg';
+import MonoConnect from '@mono.co/connect.js';
 
 const Initialization = () => {
+  const monoConnect = useMemo(() => {
+    const monoInstance = new MonoConnect({
+      onClose: () => console.log('Widget closed'),
+      onLoad: () => console.log('Widget loaded successfully'),
+      onSuccess: ({ code }: any) => console.log(`Linked successfully: ${code}`),
+      key: 'test_pk_OkLMwKAsjTRuIO4ku8q7',
+    });
+
+    monoInstance.setup();
+
+    return monoInstance;
+  }, []);
   return (
     <section className="initialization">
       <div className="sidenav">
@@ -22,9 +35,10 @@ const Initialization = () => {
           <h3 className="text-content">
             Final Step <span>Link your Bank Account in seconds</span>
           </h3>
-          <Link className="link-now-btn" to="../dashboard">
+
+          <button onClick={() => monoConnect.open()} className="link-now-btn">
             Link Now <FiArrowUpRight />
-          </Link>
+          </button>
         </div>
       </main>
     </section>
