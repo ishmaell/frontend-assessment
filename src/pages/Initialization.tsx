@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
-import { NotifyError } from '../components/toast/Toast';
+import { NotifyError, NotifySuccess } from '../components/toast/Toast';
 import MonoLogoWhite from '../assets/images/mono-logo-white.svg';
 import LoadingSkeleton from '../assets/images/loading-skeleton.svg';
 import Padlock from '../assets/images/padlock.svg';
@@ -37,7 +37,7 @@ const Initialization = () => {
         }
       );
 
-      console.log(accountDetails);
+      NotifySuccess('Your account has been linked successfully.');
       setAccountBalance(accountDetails.data?.accountBalance);
       navigate('/');
     } catch (error: any) {
