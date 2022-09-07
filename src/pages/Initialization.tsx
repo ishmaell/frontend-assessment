@@ -1,17 +1,57 @@
 import { useMemo } from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
-//import { NotifyError } from '../components/toast/Toast';
+import { NotifyError } from '../components/toast/Toast';
 import MonoLogoWhite from '../assets/images/mono-logo-white.svg';
 import LoadingSkeleton from '../assets/images/loading-skeleton.svg';
 import Padlock from '../assets/images/padlock.svg';
 import MonoConnect from '@mono.co/connect.js';
+import axios from '../api/axios';
+import { GET_ACCOUNT_ID_PATH, SAVE_LINKED_ACCOUNT } from '../constants';
+import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const Initialization = () => {
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+
+  const getAccountId = async (code: string) => {
+    try {
+      const response = await axios.post(
+        GET_ACCOUNT_ID_PATH,
+        { code },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.accessToken}`,
+          },
+        }
+      );
+      await axios.post(
+        SAVE_LINKED_ACCOUNT,
+        { id: response?.data.id },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.accessToken}`,
+          },
+        }
+      );
+
+      navigate('/dashboard');
+    } catch (error: any) {
+      if (!error?.response) {
+        NotifyError('No server response');
+      } else if (error.response?.status === 401) {
+        NotifyError(error.response?.data?.error);
+      } else {
+        NotifyError('Unknown error occured. Please try again.');
+      }
+    }
+  };
+
   const monoConnect = useMemo(() => {
     const monoInstance = new MonoConnect({
       onClose: () => console.log('Widget closed'),
       onLoad: () => console.log('Widget loaded successfully'),
-      onSuccess: ({ code }: any) => console.log(`Linked successfully: ${code}`),
+      onSuccess: ({ code }: any) => getAccountId(code),
       key: 'test_pk_OkLMwKAsjTRuIO4ku8q7',
     });
 

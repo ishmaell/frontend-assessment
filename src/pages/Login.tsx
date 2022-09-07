@@ -26,14 +26,23 @@ const Login = () => {
     setIsRequesting(true);
     try {
       const response = await axios.post(LOGIN_URL_PATH, formValues);
-      const { firstName, lastName, email, accessToken } = response?.data;
+      const { firstName, lastName, email, hasLinkedAccount, accessToken } =
+        response?.data;
       setAuth({
         firstName,
         lastName,
         email,
+        hasLinkedAccount,
         accessToken,
       });
-      navigate(from, { replace: true });
+      if (!hasLinkedAccount) {
+        navigate('/initialize');
+      } else if (hasLinkedAccount && from !== 'initialize') {
+        // navigate('/');
+        navigate(from, { replace: true });
+      } else {
+        navigate('/');
+      }
     } catch (error: any) {
       if (!error?.response) {
         NotifyError('No server response');
@@ -41,7 +50,7 @@ const Login = () => {
         error.response?.status === 401 ||
         error.response?.status === 400
       ) {
-        NotifyError(error.response.data.error);
+        NotifyError(error.response.data.message);
       } else {
         NotifyError('Unknown error occured. Please try again.');
       }

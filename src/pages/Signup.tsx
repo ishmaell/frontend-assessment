@@ -23,11 +23,14 @@ const Signup = () => {
     setIsRequesting(true);
     try {
       const response = await axios.post(SIGNUP_URL_PATH, formValues);
-      const { firstName, lastName, email, accessToken } = response?.data;
+      const { firstName, lastName, email, hasLinkedAccount, accessToken } =
+        response?.data;
+
       setAuth({
         firstName,
         lastName,
         email,
+        hasLinkedAccount,
         accessToken,
       });
 

@@ -9,6 +9,7 @@ import Signup from '../pages/Signup';
 import Login from '../pages/Login';
 import Initialize from '../pages/Initialization';
 import Dashboard from '../pages/Dashboard';
+import Accounts from '../pages/Accounts';
 
 const Routers = () => {
   return (
@@ -22,6 +23,7 @@ const Routers = () => {
         <Route element={<PrivateLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="accounts" element={<Accounts />} />
         </Route>
 
         <Route path="initialize" element={<Initialize />} />

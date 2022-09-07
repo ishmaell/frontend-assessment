@@ -13,7 +13,7 @@
 }
 
 .spinner path {
-  @apply stroke-gray-200;
+  @apply stroke-mono-black;
 }
 
 .spinner circle {

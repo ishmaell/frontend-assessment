@@ -12,6 +12,7 @@
 @import './components/public-layout';
 @import './components/spinner';
 @import './components/sidenav';
+@import './components/table';
 @import './components/toast';
 @import './components/where-your-money-go';
 @import './pages/dashboard';
