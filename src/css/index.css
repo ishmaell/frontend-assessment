@@ -8,6 +8,7 @@
 @import './components/form';
 @import './components/header';
 @import './components/latest-tx';
+@import './components/persist-login';
 @import './components/private-layout';
 @import './components/public-layout';
 @import './components/spinner';
